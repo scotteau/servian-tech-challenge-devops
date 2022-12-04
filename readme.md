@@ -23,7 +23,7 @@ Components
 - [x] Push image to ECR
 
 - [ ] Provisioning Infrastructure in Terraform
-  - [ ] Networking
+  - [x] Networking
   - [ ] Security Groups
   - [ ] IAM roles
   - [ ] Database

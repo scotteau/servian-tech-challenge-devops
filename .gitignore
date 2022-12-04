@@ -1,3 +1,4 @@
 .idea
 .terraform
 files/ecr_repo.json
+terraform.tfstate

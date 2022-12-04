@@ -17,7 +17,7 @@ Components
 
 ##  Todos
 - [x] Add application repo as a submodule 
-- [ ] Build a docker image for the app
+- [x] Build a docker image for the app
 - [ ] Create ECR repository using AWS Cli
 - [ ] Push image to ECR
 

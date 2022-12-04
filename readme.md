@@ -20,7 +20,7 @@ Components
 - [x] Add application repo as a submodule 
 - [x] Build a docker image for the app
 - [x] Create ECR repository using AWS Cli
-- [ ] Push image to ECR
+- [x] Push image to ECR
 
 - [ ] Provisioning Infrastructure in Terraform
   - [ ] Networking

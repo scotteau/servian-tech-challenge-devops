@@ -5,6 +5,7 @@
 - AWS Cli
 - Git
 - Docker
+- jq
 
 ## Architecture Diagram
 ![diagram](./files/diagram.png)
@@ -18,7 +19,7 @@ Components
 ##  Todos
 - [x] Add application repo as a submodule 
 - [x] Build a docker image for the app
-- [ ] Create ECR repository using AWS Cli
+- [x] Create ECR repository using AWS Cli
 - [ ] Push image to ECR
 
 - [ ] Provisioning Infrastructure in Terraform

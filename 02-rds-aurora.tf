@@ -90,12 +90,6 @@ resource "aws_ssm_parameter" "DB_PASSWORD" {
   value = random_password.db_password.result
 }
 
-resource "aws_ssm_parameter" "DB_TYPE" {
-  name  = "/APP/DB_TYPE"
-  type  = "String"
-  value = "postgres"
-}
-
 resource "aws_ssm_parameter" "DB_HOST" {
   name  = "/app/DB_HOST"
   type  = "SecureString"
@@ -106,6 +100,12 @@ resource "aws_ssm_parameter" "DB_NAME" {
   name  = "/APP/DB_NAME"
   type  = "String"
   value = "app"
+}
+
+resource "aws_ssm_parameter" "DB_PORT" {
+  name  = "/APP/DB_PORT"
+  type  = "String"
+  value = "5432"
 }
 
 locals {

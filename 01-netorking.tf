@@ -79,7 +79,7 @@ resource "aws_subnet" "server" {
 
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
-  tags = merge(local.default_tags, { Name = "${local.prefix}-private-route-table" })
+  tags   = merge(local.default_tags, { Name = "${local.prefix}-private-route-table" })
 }
 
 resource "aws_route" "private" {
@@ -111,5 +111,5 @@ resource "aws_subnet" "database" {
 
 resource "aws_route_table" "database" {
   vpc_id = aws_vpc.main.id
-  tags = merge(local.default_tags, { Name = "${local.prefix}-route-table-database" })
+  tags   = merge(local.default_tags, { Name = "${local.prefix}-route-table-database" })
 }

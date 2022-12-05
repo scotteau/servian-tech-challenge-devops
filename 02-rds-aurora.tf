@@ -12,8 +12,6 @@ module "rds_aurora" {
   engine_version = "13.8"
   instance_class = "db.t4g.medium"
 
-  availability_zones = [data.aws_availability_zones.available.names[0], data.aws_availability_zones.available.names[1]]
-
   instances = {
     one = {
       publicly_accessible = true
@@ -25,7 +23,7 @@ module "rds_aurora" {
   db_subnet_group_name   = aws_db_subnet_group.aurora_postgres.name
   create_db_subnet_group = false
   create_security_group  = true
-  allowed_cidr_blocks    = aws_subnet.database[*].cidr_block
+  allowed_cidr_blocks    = aws_subnet.server[*].cidr_block
 
 
   iam_database_authentication_enabled = true
@@ -34,7 +32,7 @@ module "rds_aurora" {
   create_random_password              = false
 
   apply_immediately   = true
-  skip_final_snapshot = false
+  skip_final_snapshot = true
 
   db_parameter_group_name         = aws_db_parameter_group.postgres_13.id
   db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.postgres_13.id
@@ -111,11 +109,11 @@ resource "aws_ssm_parameter" "DB_NAME" {
 }
 
 locals {
-  protocol = "postgresql"
-  DB_USER = aws_ssm_parameter.DB_USER.value
+  protocol    = "postgresql"
+  DB_USER     = aws_ssm_parameter.DB_USER.value
   DB_PASSWORD = aws_ssm_parameter.DB_PASSWORD.value
-  host     = module.rds_aurora.cluster_endpoint
-  port     = module.rds_aurora.cluster_port
+  host        = module.rds_aurora.cluster_endpoint
+  port        = module.rds_aurora.cluster_port
 }
 
 

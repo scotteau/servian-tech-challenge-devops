@@ -1,5 +1,5 @@
 .idea
 .terraform
-files/ecr_repo.json
+files/*.json
 terraform.tfstate
 *.tfstate.backup

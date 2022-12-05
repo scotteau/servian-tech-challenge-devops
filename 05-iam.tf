@@ -10,20 +10,20 @@ data "aws_iam_policy_document" "ecs_tasks_execution_role" {
 }
 
 resource "aws_iam_role" "ecs_task_execution_role" {
-  name               = "ecs_task_execution_role"
+  name               = "${var.project_name}-ecs-task-role"
   description        = "IAM role for ecs task execution role"
   assume_role_policy = data.aws_iam_policy_document.ecs_tasks_execution_role.json
 
   managed_policy_arns = [
     "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
-    aws_iam_policy.ssm_access.arn
+    aws_iam_policy.extra.arn
   ]
 
   tags = local.default_tags
 }
 
-resource "aws_iam_policy" "ssm_access" {
-  name   = "ecs_ssm_access"
+resource "aws_iam_policy" "extra" {
+  name   = "servian-tc-extra-policy"
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -31,7 +31,8 @@ resource "aws_iam_policy" "ssm_access" {
     {
       "Effect": "Allow",
       "Action": [
-        "ssm:GetParameters"
+        "ssm:GetParameters",
+        "logs:CreateLogGroup"
       ],
       "Resource": [
         "*"

@@ -1,0 +1,74 @@
+[
+  {
+    "name": "${name}",
+    "image": "${image}",
+    "cpu": 0,
+    "links": [],
+    "portMappings": [
+      {
+        "containerPort": ${ListenPort},
+        "hostPort": ${ListenPort},
+        "protocol": "tcp"
+      }
+    ],
+    "essential": true,
+    "entryPoint": [],
+    "command": ["serve"],
+    "environment": [
+      {
+        "name": "VTT_DBTYPE",
+        "value": "${DbType}"
+      },
+      {
+        "name": "VTT_LISTENHOST",
+        "value": "${ListenHost}"
+      },
+      {
+        "name": "VTT_LISTENPORT",
+        "value": "${ListenPort}"
+      }
+    ],
+    "environmentFiles": [],
+    "mountPoints": [],
+    "volumesFrom": [],
+    "secrets": [
+      {
+        "name": "VTT_DBUSER",
+        "valueFrom": "${DbUser}"
+      },
+      {
+        "name": "VTT_DBPASSWORD",
+        "valueFrom": "${DbPassword}"
+      },
+      {
+      "name": "VTT_DBNAME",
+      "valueFrom": "${DbName}"
+      },
+      {
+        "name": "VTT_DBHOST",
+        "valueFrom": "${DbHost}"
+      },
+      {
+        "name": "VTT_DBPORT",
+        "valueFrom": "${DbPort}"
+    }
+    ],
+    "dnsServers": [],
+    "dnsSearchDomains": [],
+    "extraHosts": [],
+    "dockerSecurityOptions": [],
+    "dockerLabels": {},
+    "ulimits": [],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-create-group": "true",
+        "awslogs-group": "/ecs/${name}",
+        "awslogs-region": "${region}",
+        "awslogs-stream-prefix": "ecs"
+      },
+      "secretOptions": []
+    },
+    "systemControls": []
+  }
+]

@@ -68,16 +68,6 @@ resource "aws_db_subnet_group" "aurora_postgres" {
   tags = local.default_tags
 }
 
-# db variables
-variable "db_name" {
-  type = string
-}
-
-variable "master_username" {
-  type = string
-}
-
-
 resource "aws_ssm_parameter" "DB_USER" {
   name  = "/APP/DB_USER"
   type  = "String"

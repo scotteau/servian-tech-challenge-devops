@@ -22,10 +22,11 @@ Components
 - [x] Create ECR repository using AWS Cli
 - [x] Push image to ECR
 
-- [ ] Provisioning Infrastructure in Terraform
+- [x] Provisioning Infrastructure in Terraform
   - [x] Networking
-  - [ ] Security Groups
-  - [ ] IAM roles
-  - [ ] Database
-  - [ ] Application Load Balancer
-  - [ ] ECS Fargate
+  - [x] Security Groups
+  - [x] IAM roles
+  - [x] Database
+  - [x] Application Load Balancer
+  - [x] ECS Fargate
+- [ ] Seed the database

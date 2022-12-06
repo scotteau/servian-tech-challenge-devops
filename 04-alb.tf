@@ -10,7 +10,7 @@ resource "aws_alb_target_group" "ecs" {
 
   health_check {
     path                = "/healthcheck"
-    port                = "traffic-port"
+    port                = var.PORT
     healthy_threshold   = 5
     unhealthy_threshold = 2
     timeout             = 5
@@ -31,7 +31,7 @@ resource "aws_lb" "alb" {
   tags = local.default_tags
 }
 
-resource "aws_lb_listener" "redirect-to-https" {
+resource "aws_lb_listener" "forward" {
   load_balancer_arn = aws_lb.alb.arn
   port              = "80"
   protocol          = "HTTP"

@@ -2,12 +2,13 @@
   {
     "name": "${name}",
     "image": "${image}",
-    "cpu": 0,
+    "cpu": 256,
+    "memory": 512,
     "links": [],
     "portMappings": [
       {
-        "containerPort": ${ListenPort},
-        "hostPort": ${ListenPort},
+        "containerPort": ${PORT},
+        "hostPort": ${PORT},
         "protocol": "tcp"
       }
     ],
@@ -22,10 +23,6 @@
       {
         "name": "VTT_LISTENHOST",
         "value": "${ListenHost}"
-      },
-      {
-        "name": "VTT_LISTENPORT",
-        "value": "${ListenPort}"
       }
     ],
     "environmentFiles": [],

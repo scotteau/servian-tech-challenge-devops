@@ -69,6 +69,8 @@ resource "aws_ecs_service" "service" {
     security_groups  = [aws_security_group.ecs.id]
   }
 
+  depends_on = [module.rds_aurora.cluster_arn]
+
   tags = merge(local.default_tags, { Name = "${local.prefix}-service" })
 }
 

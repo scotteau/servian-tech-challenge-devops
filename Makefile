@@ -22,4 +22,5 @@ prepare: build create_ecr_repo push append
 
 seed:
 	chmod +x ./files/seed.sh
-	files/seed.sh
+	files/seed.sh &> /dev/null
+	echo "Seeding the db..."

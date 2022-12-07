@@ -9,7 +9,7 @@ module "rds_aurora" {
 
   name           = "${local.prefix}-db-postgres"
   engine         = "aurora-postgresql"
-  engine_version = "13.8"
+  engine_version = "13.3"
   instance_class = "db.t4g.medium"
 
   instances = {
@@ -81,7 +81,7 @@ resource "aws_ssm_parameter" "DB_PASSWORD" {
 }
 
 resource "aws_ssm_parameter" "DB_HOST" {
-  name  = "/app/DB_HOST"
+  name  = "/APP/DB_HOST"
   type  = "SecureString"
   value = local.host
 }
@@ -89,7 +89,7 @@ resource "aws_ssm_parameter" "DB_HOST" {
 resource "aws_ssm_parameter" "DB_NAME" {
   name  = "/APP/DB_NAME"
   type  = "String"
-  value = "app"
+  value = "postgres"
 }
 
 resource "aws_ssm_parameter" "DB_PORT" {
@@ -110,4 +110,8 @@ locals {
 
 output "endpoint" {
   value = module.rds_aurora.cluster_endpoint
+}
+
+output "db_security_group_id" {
+  value = module.rds_aurora.security_group_id
 }

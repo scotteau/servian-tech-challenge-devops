@@ -76,3 +76,4 @@ make start
 - Create tests for terraform modules
 - Migrate makefile logic to CI/CD pipeline
 - Move state to a remote backend
+- Map a domain to load balancer dns name in route53 & enable HTTPS for connection

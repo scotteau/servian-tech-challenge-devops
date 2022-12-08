@@ -36,29 +36,11 @@ Components
 - [x] Better console output for user experience
 
 ## How to run the project
-```shell
-# initialise the project
-make init
-```
+Please make you the correct AWS credentials are configured before running the following commands.
 
 ```shell
-# create the ecr repo
-make create_ecr_repo
-```
-
-```shell
-# Prepare the payload before deployment
-make prepare
-```
-
-```shell
-# Deploy infrastructure & payload
-make deploy
-```
-
-```shell
-# Seeding the db
-make seed
+# one command to spin up everything
+make start
 ```
 
 ```shell
@@ -66,10 +48,6 @@ make seed
 make destroy
 ```
 
-```shell
-# one command to spin up everything
-make start
-```
 
 ## More ideas
 - Refactor terraform components into modules for better reusability

@@ -15,6 +15,9 @@ create_ecr_repo:
 delete_ecr_repo:
 	aws ecr delete-repository --repository-name servian-tc-app --force > /dev/null
 
+find_ecr_repo:
+	aws ecr describe-repositories --repository-names servian-tc-app > files/ecr_repo.json
+
 push:
 	AWS_ACCOUNT_ID=$$(cat files/ecr_repo.json | jq -r '.repository .registryId'); \
 	REPO_URI=$$(cat files/ecr_repo.json | jq -r '.repository .repositoryUri'); \
@@ -36,7 +39,9 @@ seed:
 	echo "seeding the database..."; \
 	echo "app is available at http://$$(terraform output app_url | tr -d '\"')";
 
-destroy:
+destroy: delete_ecr_repo
 	terraform destroy
+	rm terraform.tfvars
+	rm files/ecr_repo.json
 
 start: init create_ecr_repo prepare deploy seed

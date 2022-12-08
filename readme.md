@@ -75,4 +75,4 @@ make start
 - Refactor terraform components into modules for better reusability
 - Create tests for terraform modules
 - Migrate makefile logic to CI/CD pipeline
-- 
+- Move state to a remote backend

@@ -41,3 +41,7 @@ resource "aws_lb_listener" "forward" {
     target_group_arn = aws_alb_target_group.ecs.arn
   }
 }
+
+output "app_url" {
+  value = aws_lb.alb.dns_name
+}

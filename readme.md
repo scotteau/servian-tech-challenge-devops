@@ -6,6 +6,7 @@
 - Git
 - Docker
 - jq
+- Bash
 
 ## Architecture Diagram
 ![diagram](./files/diagram.png)
@@ -29,4 +30,49 @@ Components
   - [x] Database
   - [x] Application Load Balancer
   - [x] ECS Fargate
-- [ ] Seed the database
+- [x] Seed the database
+
+- [x] Instructions on how to use the project
+- [x] Better console output for user experience
+
+## How to run the project
+```shell
+# initialise the project
+make init
+```
+
+```shell
+# create the ecr repo
+make create_ecr_repo
+```
+
+```shell
+# Prepare the payload before deployment
+make prepare
+```
+
+```shell
+# Deploy infrastructure & payload
+make deploy
+```
+
+```shell
+# Seeding the db
+make seed
+```
+
+```shell
+# Tear down
+make destroy
+```
+
+```shell
+# one command to spin up everything
+make start
+```
+
+## More ideas
+- Refactor terraform components into modules for better reusability
+- Create tests for terraform modules
+- Migrate makefile logic to CI/CD pipeline
+- 
